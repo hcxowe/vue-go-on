@@ -12,10 +12,14 @@
     <hr />
     <div>{{ `mouseposition: x: ${x}, y: ${y}` }}</div>
     <hr />
+
+    <input v-focus />
+
+    <hr />
 </template>
 
 <script setup lang="ts">
-import { ref, provide } from 'vue'
+import { ref, provide, mounted } from 'vue'
 import useMouse from './utils/mouse.ts'
 
 import HelloWorld from './components/HelloWorld.vue'
@@ -30,6 +34,10 @@ const privateName = ref('hcxowe')
 provide('privateName', privateName)
 
 const { x, y } = useMouse()
+
+const vFocus1 = {
+    mounted: (el) => el.focus(),
+}
 </script>
 
 <style scoped></style>
