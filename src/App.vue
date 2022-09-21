@@ -16,6 +16,10 @@
     <input v-focus />
 
     <hr />
+
+    <Translate />
+
+    <hr />
 </template>
 
 <script setup lang="ts">
@@ -23,6 +27,7 @@ import { ref, provide, mounted } from 'vue'
 import useMouse from './utils/mouse.ts'
 
 import HelloWorld from './components/HelloWorld.vue'
+import Translate from './components/Translate.vue'
 
 const count = ref(0)
 const onButtonClick = (count1) => {
