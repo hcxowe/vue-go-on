@@ -1,12 +1,14 @@
-import { createApp } from 'vue'
+import { createApp, version } from 'vue'
 import './style.css'
 import App from './App.vue'
 import Button from './components/Button.vue'
 import i18nPlugin from './plugins/i18n'
 
-const app = createApp(App)
+const app = createApp(App, { title: 'test vue' + version })
 
 app.component('Button', Button)
+
+app.provide('appData', { type: 'app' })
 
 app.directive('focus', {
     // 在绑定元素的 attribute 前 或事件监听器应用前调用
@@ -30,5 +32,19 @@ app.use(i18nPlugin, {
         hello: 'Bonjour!',
     },
 })
+
+app.config.errorHandler = (err) => {
+    console.log(err)
+}
+
+app.config.warnHandler = (msg) => {
+    console.log(msg)
+}
+
+app.config.performance = true
+
+app.config.compilerOptions.whitespace = 'preserve'
+
+app.config.globalProperties.$globalName = 'my test project'
 
 app.mount('#app')

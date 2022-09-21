@@ -1,4 +1,5 @@
 <template>
+    <h1 style="text-align: center">{{ props.title }}</h1>
     <HelloWorld />
     <hr />
     <Button
@@ -28,6 +29,14 @@ import useMouse from './utils/mouse.ts'
 
 import HelloWorld from './components/HelloWorld.vue'
 import Translate from './components/Translate.vue'
+
+interface Props {
+    title?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    title: 'Vite + Vue3 + TS',
+})
 
 const count = ref(0)
 const onButtonClick = (count1) => {
